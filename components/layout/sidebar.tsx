@@ -28,7 +28,7 @@ export function Sidebar() {
       <div className="px-4 py-5 border-b">
         <div className="flex items-center gap-2">
           <Boxes className="h-6 w-6 text-blue-600" />
-          <span className="font-bold text-sm leading-tight">Shopify<br />練習アプリ</span>
+          <span className="font-bold text-sm leading-tight">ShopifyMe</span>
         </div>
       </div>
       <nav className="flex-1 py-4 px-2 space-y-0.5">

@@ -73,7 +73,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-sm">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Shopify練習アプリ</CardTitle>
+          <CardTitle className="text-2xl font-bold">ShopifyMe</CardTitle>
           <CardDescription>
             {isDev
               ? 'メールアドレスとパスワードを入力してください'

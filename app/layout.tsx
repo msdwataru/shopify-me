@@ -9,7 +9,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Shopify練習アプリ",
+  title: "ShopifyMe",
   description: "アパレル向けShopify運用練習アプリ",
 };
 
