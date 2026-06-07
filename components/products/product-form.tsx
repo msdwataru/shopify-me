@@ -96,7 +96,7 @@ export function ProductForm({ productId, defaultValues, brands }: ProductFormPro
         <Textarea id="description" rows={4} {...form.register('description')} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label>ブランド</Label>
           <Select

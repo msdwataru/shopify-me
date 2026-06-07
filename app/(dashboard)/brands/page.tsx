@@ -13,7 +13,7 @@ export default async function BrandsPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <h1 className="text-2xl font-bold text-gray-900">ブランド管理</h1>
         <Link href="/brands/new">
           <Button>
@@ -24,6 +24,7 @@ export default async function BrandsPage() {
       </div>
 
       <div className="bg-white rounded-lg border overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-gray-50">
@@ -66,6 +67,7 @@ export default async function BrandsPage() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

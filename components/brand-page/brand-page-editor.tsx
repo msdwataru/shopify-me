@@ -130,9 +130,9 @@ export function BrandPageEditor({ brandId, initialPage, themeFormats, handle }: 
   const activeDef = activeSection?.definition
 
   return (
-    <div className="flex gap-0 flex-1 min-h-0 border rounded-lg overflow-hidden bg-white">
+    <div className="flex flex-col lg:flex-row gap-0 flex-1 min-h-0 border rounded-lg overflow-hidden bg-white">
       {/* 左ペイン: セクション管理 */}
-      <div className="w-80 shrink-0 border-r flex flex-col">
+      <div className="w-full lg:w-80 shrink-0 border-b lg:border-b-0 lg:border-r flex flex-col max-h-[70vh] lg:max-h-none overflow-y-auto lg:overflow-visible">
         <div className="p-3 border-b space-y-2">
           <div className="space-y-1">
             <label className="text-xs text-gray-500">テーマフォーマット</label>

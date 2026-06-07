@@ -31,7 +31,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">商品管理</h1>
           <p className="text-sm text-gray-500">{count ?? 0} 件</p>
@@ -47,6 +47,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
       <ProductSearch brands={brands ?? []} />
 
       <div className="bg-white rounded-lg border overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-gray-50">
@@ -92,6 +93,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

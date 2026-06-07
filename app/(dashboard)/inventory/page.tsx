@@ -85,6 +85,7 @@ export default async function InventoryPage({ searchParams }: PageProps) {
       </div>
 
       <div className="bg-white rounded-lg border overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-gray-50">
@@ -143,6 +144,7 @@ export default async function InventoryPage({ searchParams }: PageProps) {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

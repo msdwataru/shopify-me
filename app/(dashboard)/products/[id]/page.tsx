@@ -28,12 +28,12 @@ export default async function ProductEditPage({ params }: PageProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/products" className="text-gray-500 hover:text-gray-700">
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <Link href="/products" className="text-gray-500 hover:text-gray-700 shrink-0">
             <ChevronLeft className="h-5 w-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">{product.title}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">{product.title}</h1>
         </div>
         <Link href={`/products/${id}/inventory`}>
           <Button variant="outline">在庫管理</Button>

@@ -31,18 +31,29 @@ function isActivePath(pathname: string, href: string) {
   return href === '/' ? pathname === '/' : pathname.startsWith(href)
 }
 
-export function Sidebar() {
+interface SidebarProps {
+  open?: boolean
+  onNavigate?: () => void
+}
+
+export function Sidebar({ open = false, onNavigate }: SidebarProps) {
   const pathname = usePathname()
 
   return (
-    <aside className="w-56 shrink-0 border-r bg-white h-full flex flex-col">
+    <aside
+      className={cn(
+        'fixed inset-y-0 left-0 z-40 w-64 shrink-0 border-r bg-white h-full flex flex-col transition-transform duration-200 ease-in-out',
+        'lg:static lg:z-auto lg:w-56 lg:translate-x-0',
+        open ? 'translate-x-0' : '-translate-x-full'
+      )}
+    >
       <div className="px-4 py-5 border-b">
         <div className="flex items-center gap-2">
           <Boxes className="h-6 w-6 text-blue-600" />
           <span className="font-bold text-sm leading-tight">ShopifyMe</span>
         </div>
       </div>
-      <nav className="flex-1 py-4 px-2 space-y-0.5">
+      <nav className="flex-1 py-4 px-2 space-y-0.5 overflow-y-auto">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = isActivePath(pathname, item.href)
@@ -50,6 +61,7 @@ export function Sidebar() {
             <div key={item.href}>
               <Link
                 href={item.href}
+                onClick={onNavigate}
                 className={cn(
                   'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                   isActive
@@ -69,6 +81,7 @@ export function Sidebar() {
                       <Link
                         key={child.href}
                         href={child.href}
+                        onClick={onNavigate}
                         className={cn(
                           'flex items-center gap-2.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                           isChildActive

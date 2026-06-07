@@ -61,7 +61,7 @@ export function BrandForm({ brandId, defaultValues }: BrandFormProps) {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-2xl">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="name">ブランド名 *</Label>
           <Input id="name" {...form.register('name')} />
@@ -118,7 +118,7 @@ export function BrandForm({ brandId, defaultValues }: BrandFormProps) {
         <Input id="external_url" type="url" {...form.register('external_url')} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="display_order">表示順</Label>
           <Input

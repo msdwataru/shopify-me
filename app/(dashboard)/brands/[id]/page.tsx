@@ -18,12 +18,12 @@ export default async function BrandEditPage({ params }: PageProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/brands" className="text-gray-500 hover:text-gray-700">
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <Link href="/brands" className="text-gray-500 hover:text-gray-700 shrink-0">
             <ChevronLeft className="h-5 w-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">{brand.name}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">{brand.name}</h1>
         </div>
         <Link href={`/brands/${id}/page-preview`}>
           <Button variant="outline">ブランドページ編集</Button>

@@ -21,7 +21,7 @@ export default async function CollectionsPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">コレクション</h1>
           <p className="text-sm text-gray-500">{collections?.length ?? 0} 件</p>

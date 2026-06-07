@@ -35,6 +35,7 @@ export default async function LogsPage() {
       <h1 className="text-2xl font-bold text-gray-900">操作履歴</h1>
 
       <div className="bg-white rounded-lg border overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-gray-50">
@@ -80,6 +81,7 @@ export default async function LogsPage() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )
