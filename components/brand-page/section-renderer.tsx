@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import NextImage from 'next/image'
 import type { ThemeSectionDef, ThemeBlockDef } from '@/types/database.types'
 
 type SectionValues = Record<string, unknown>
@@ -75,10 +76,17 @@ function Img({
   }, [src, bucket])
 
   if (!resolvedSrc) {
-    return <div className={`${className} bg-gray-200 animate-pulse`} />
+    return <div className="absolute inset-0 bg-gray-200 animate-pulse" />
   }
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img src={resolvedSrc} alt="" className={className} />
+  return (
+    <NextImage
+      src={resolvedSrc}
+      alt=""
+      fill
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      className={className}
+    />
+  )
 }
 
 // ── 1. Announcement bar ─────────────────────────────────────────────────
@@ -101,7 +109,7 @@ function ImageBanner({ values, variant }: { values: SectionValues; variant: 'edi
   return (
     <div className={`relative w-full ${isPage ? 'h-[70vh]' : 'h-48 rounded-lg'} bg-gray-900 overflow-hidden`}>
       {has(values.image) ? (
-        <Img src={s(values.image)} className="absolute inset-0 w-full h-full object-cover" />
+        <Img src={s(values.image)} className="object-cover" />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900" />
       )}
@@ -145,7 +153,7 @@ function Slideshow({ values, blocks, variant }: { values: SectionValues; blocks:
   return (
     <div className={`relative w-full ${isPage ? 'h-[80vh]' : 'h-48 rounded-lg'} bg-gray-900 overflow-hidden`}>
       {has(slide.image) ? (
-        <Img src={s(slide.image)} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500" />
+        <Img src={s(slide.image)} className="object-cover transition-opacity duration-500" />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900" />
       )}
@@ -227,9 +235,9 @@ function ImageWithText({ values, variant }: { values: SectionValues; variant: 'e
     <div className={`flex bg-white ${isPage
       ? `flex-col md:flex-row min-h-[50vh] ${imgFirst ? '' : 'md:flex-row-reverse'}`
       : `gap-6 p-4 rounded-lg ${imgFirst ? '' : 'flex-row-reverse'}`}`}>
-      <div className={`${isPage ? 'md:w-1/2 h-64 md:h-auto' : 'w-48 h-36'} shrink-0 overflow-hidden ${isPage ? '' : 'rounded'}`}>
+      <div className={`relative ${isPage ? 'md:w-1/2 h-64 md:h-auto' : 'w-48 h-36'} shrink-0 overflow-hidden ${isPage ? '' : 'rounded'}`}>
         {has(values.image) ? (
-          <Img src={s(values.image)} className="w-full h-full object-cover" />
+          <Img src={s(values.image)} className="object-cover" />
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">画像なし</div>
         )}
@@ -271,8 +279,8 @@ function Multicolumn({ values, blocks, variant }: { values: SectionValues; block
             return (
               <div key={i} className={`text-${align} space-y-3`}>
                 {has(bs.image) && (
-                  <div className={`overflow-hidden rounded ${isPage ? 'h-48' : 'h-24'}`}>
-                    <Img src={s(bs.image)} className="w-full h-full object-cover" />
+                  <div className={`relative overflow-hidden rounded ${isPage ? 'h-48' : 'h-24'}`}>
+                    <Img src={s(bs.image)} className="object-cover" />
                   </div>
                 )}
                 {has(bs.title) && (
@@ -431,7 +439,7 @@ function Video({ values, variant }: { values: SectionValues; variant: 'editor' |
           </div>
         ) : has(values.cover_image) ? (
           <div className={`relative ${isPage ? 'aspect-video' : 'h-36'} overflow-hidden ${isPage ? '' : 'rounded'}`}>
-            <Img src={s(values.cover_image)} className="w-full h-full object-cover opacity-80" />
+            <Img src={s(values.cover_image)} className="object-cover opacity-80" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className={`${isPage ? 'w-16 h-16' : 'w-10 h-10'} bg-white/90 rounded-full flex items-center justify-center`}>
                 <span className={`${isPage ? 'text-2xl' : 'text-base'} pl-0.5`}>▶</span>

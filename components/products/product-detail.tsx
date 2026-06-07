@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 // ── Types ──────────────────────────────────────────────────────────────
 export type PDPVariant = {
@@ -128,13 +129,15 @@ export function ProductDetail({ product, relatedProducts, inventory, handle }: P
           {/* ─── Left: Media gallery ─── */}
           <div className="space-y-3">
             {/* Main image */}
-            <div className="aspect-[4/5] bg-gray-900 overflow-hidden">
+            <div className="relative aspect-[4/5] bg-gray-900 overflow-hidden">
               {activeImage?.signedUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={activeImage.signedUrl}
                   alt={activeImage.alt ?? product.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
                 />
               ) : (
                 <Placeholder label={product.product_type ?? product.title[0]} />
@@ -148,14 +151,13 @@ export function ProductDetail({ product, relatedProducts, inventory, handle }: P
                   <button
                     key={img.id}
                     onClick={() => setActiveImageIdx(i)}
-                    className={`shrink-0 w-16 h-20 overflow-hidden border-2 transition-colors
+                    className={`relative shrink-0 w-16 h-20 overflow-hidden border-2 transition-colors
                                 ${i === activeImageIdx
                                   ? 'border-black'
                                   : 'border-transparent hover:border-gray-300'}`}
                   >
                     {img.signedUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={img.signedUrl} alt="" className="w-full h-full object-cover" />
+                      <Image src={img.signedUrl} alt="" fill sizes="64px" className="object-cover" />
                     ) : (
                       <div className="w-full h-full bg-gray-800" />
                     )}
@@ -399,13 +401,14 @@ export function ProductDetail({ product, relatedProducts, inventory, handle }: P
                   href={`/p/${handle}/products/${p.id}`}
                   className="group"
                 >
-                  <div className="aspect-[4/5] bg-gray-900 overflow-hidden mb-3">
+                  <div className="relative aspect-[4/5] bg-gray-900 overflow-hidden mb-3">
                     {p.mainImageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={p.mainImageUrl}
                         alt={p.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        fill
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
                       <Placeholder label={p.title[0]} />

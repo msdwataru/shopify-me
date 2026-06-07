@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Database } from '@/types/database.types'
 
 interface PageProps {
@@ -188,11 +189,12 @@ function ProductCard({ product, handle }: { product: ProductWithMeta; handle: st
       <div className="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4">
 
         {product.mainImageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={product.mainImageUrl}
             alt={product.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+            fill
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            className="object-cover transition-transform duration-700 ease-out hover:scale-105"
           />
         ) : (
           /* 画像未登録プレースホルダー */

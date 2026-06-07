@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -208,10 +209,9 @@ export function ProductImages({ productId }: { productId: string }) {
                 </div>
 
                 {/* Thumbnail */}
-                <div className="w-16 h-16 shrink-0 rounded overflow-hidden bg-gray-100">
+                <div className="relative w-16 h-16 shrink-0 rounded overflow-hidden bg-gray-100">
                   {img.signedUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={img.signedUrl} alt={img.alt ?? ''} className="w-full h-full object-cover" />
+                    <Image src={img.signedUrl} alt={img.alt ?? ''} fill sizes="64px" className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <ImageIcon className="h-6 w-6 text-gray-300" />
