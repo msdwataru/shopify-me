@@ -15,6 +15,7 @@ declare
   v_iwt      uuid;
   v_multicol uuid;
   v_logo     text;
+  v_hero     text;
   v_blouse   text;
   v_blazer   text;
   v_trousers text;
@@ -45,6 +46,7 @@ begin
 
   -- アップロード済みブランド画像のStorageパス（brand-images バケット, scripts/upload-limora-images.mjs 参照）
   v_logo     := v_org || '/limora/limora-logo.png';
+  v_hero     := v_org || '/limora/limora-hero.png';
   v_blouse   := v_org || '/limora/limora-look-blouse.png';
   v_blazer   := v_org || '/limora/limora-look-blazer.png';
   v_trousers := v_org || '/limora/limora-look-trousers.png';
@@ -68,7 +70,7 @@ begin
   insert into brand_page_section
     (org_id, brand_page_id, theme_section_def_id, position, settings_values, enabled)
   values (v_org, v_page, v_banner, 0, jsonb_build_object(
-    'image',        v_blouse,
+    'image',        v_hero,
     'heading',      'LIMORA',
     'text',         '<p>毎日の服選びを少しだけ軽くする。韓国カジュアル × ナチュラルテイストのデイリーウェア。</p>',
     'button_label', 'コレクションを見る',
